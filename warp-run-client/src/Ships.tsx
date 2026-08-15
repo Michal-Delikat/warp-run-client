@@ -7,17 +7,18 @@ import "./Ships.css";
 
 function Ships() {
     const { token } = useAuth();
-    const { data, isLoading, isError, error } = useQuery({
+    const { data, isPending, isError, error } = useQuery({
         queryKey: ['me/ships'],
         queryFn: async () => {
             const meShipsResponse = await axios.get('http://localhost:3000/me/ships', {
                 headers: { Authorization: `Bearer ${token}` },
             });
             return meShipsResponse.data;
-        }
+        },
+        enabled: !!token,
     });
 
-    if (isLoading) return <p>Player ships loading...</p>;
+    if (isPending) return <p>Player ships loading...</p>;
     if (isError) return <p>Error occured: {error.message}</p>;
 
     return (

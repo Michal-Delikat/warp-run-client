@@ -3,4 +3,5 @@ export interface ShipData {
     name: string;
     currentPlanet: { name: string } | null;
     destinationPlanet: { name: string } | null;
+    arrivalAt: any
 }

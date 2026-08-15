@@ -6,32 +6,31 @@ import axios from "axios";
 type AuthContextType = {
   token: string | null;
   isLoading: boolean;
+  login: (credentials: { username: string; password: string }) => void;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [token, setToken] = useState<string | null>(null);
+  const [token, setToken] = useState<string | null>(() => localStorage.getItem("token"));
 
   const loginMutation = useMutation({
-    mutationFn: async () => {
-      const response = await axios.post("http://localhost:3000/login", {
-        username: "kapitan",
-        password: "tajnehaslo123",
-      });
+    mutationFn: async (credentials: { username: string; password: string }) => {
+      const response = await axios.post("http://localhost:3000/login", credentials);
       return response.data.token as string;
     },
     onSuccess: (receivedToken) => {
       setToken(receivedToken);
+      localStorage.setItem("token", receivedToken);
     },
   });
 
-  useEffect(() => {
-    loginMutation.mutate();
-  }, []);
+  // useEffect(() => {
+  //   loginMutation.mutate({ username: "kapitan", password: "tajnehaslo123" });
+  // }, []);
 
   return (
-    <AuthContext.Provider value={{ token, isLoading: loginMutation.isPending }}>
+    <AuthContext.Provider value={{ token, login: loginMutation.mutate, isLoading: loginMutation.isPending }}>
       {children}
     </AuthContext.Provider>
   );
