@@ -39,6 +39,7 @@ function TravelControls({ shipId, currentPlanetId }: TravleControlsProps) {
 
     return (
         <div className="travel-controls-wrapper">
+            <h4>Travel options</h4>
             {neighbors?.map((planet: {id: string; name: string }) => (
                 <button 
                     key={planet.id}
@@ -49,7 +50,7 @@ function TravelControls({ shipId, currentPlanetId }: TravleControlsProps) {
                 </button>
             ))}
         </div>
-    )
+    );
 }
 
 export default TravelControls;
