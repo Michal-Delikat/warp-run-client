@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
-import { useAuth } from "./context/AuthContext";
-import LogOutButton from "./components/LogOutButton";
+import { useAuth } from "../auth/AuthContext";
+import LogOutButton from "./LogOutButton";
 import "./PlayerInfo.css";
 
 function PlayerInfo() {

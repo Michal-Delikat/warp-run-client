@@ -1,8 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import { useAuth } from './context/AuthContext';
-import type { ShipData } from './types/ship';
-import Ship from "./Ship"; 
+import { useAuth } from '../auth/AuthContext';
+import type { ShipData } from './types';
+import Ship from "./Ship.tsx"; 
 import "./Ships.css";
 
 function Ships() {

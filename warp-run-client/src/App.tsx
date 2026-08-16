@@ -1,7 +1,7 @@
-import { useAuth } from "./context/AuthContext.tsx";
-import LoginForm from "./components/LoginForm.tsx";
-import PlayerInfo from "./PlayerInfo";
-import Ships from "./Ships.tsx";
+import { useAuth } from "./features/auth/AuthContext.tsx";
+import LoginForm from "./features/auth/LoginForm.tsx";
+import PlayerInfo from "./features/player/PlayerInfo.tsx";
+import Ships from "./features/ships/Ships.tsx";
 import "./App.css";
 
 function App() {

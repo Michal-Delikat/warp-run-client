@@ -1,7 +1,7 @@
 export interface ShipData {
     id: string;
     name: string;
-    currentPlanet: { name: string } | null;
+    currentPlanet: { id: string; name: string; } | null;
     destinationPlanet: { name: string } | null;
     arrivalAt: any
 }
