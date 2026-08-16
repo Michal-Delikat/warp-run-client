@@ -5,8 +5,9 @@ import axios from "axios";
 
 type AuthContextType = {
   token: string | null;
-  isLoading: boolean;
   login: (credentials: { username: string; password: string }) => void;
+  logout: () => void;
+  isLoading: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -25,12 +26,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
   });
 
-  // useEffect(() => {
-  //   loginMutation.mutate({ username: "kapitan", password: "tajnehaslo123" });
-  // }, []);
+  function logout() {
+    localStorage.removeItem("token");
+    setToken(null);
+  }
 
   return (
-    <AuthContext.Provider value={{ token, login: loginMutation.mutate, isLoading: loginMutation.isPending }}>
+    <AuthContext.Provider value={{ token, login: loginMutation.mutate, logout, isLoading: loginMutation.isPending }}>
       {children}
     </AuthContext.Provider>
   );

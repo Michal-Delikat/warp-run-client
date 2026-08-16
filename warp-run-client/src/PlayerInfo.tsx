@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import { useAuth } from "./context/AuthContext";
+import LogOutButton from "./components/LogOutButton";
 import "./PlayerInfo.css";
 
 function PlayerInfo() {
@@ -24,6 +25,7 @@ function PlayerInfo() {
         <div className="player-info-wrapper">
             <p className="player-username">{data.username}</p>
             <p className="player-cash">{data.cash}$</p>
+            <LogOutButton></LogOutButton>
         </div>
     );
 }
