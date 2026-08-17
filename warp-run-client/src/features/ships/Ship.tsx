@@ -1,7 +1,8 @@
 import type { ShipData } from "./types";
 import Countdown from './Countdown';
-import TravelControls from './TravelControls';
+import Cargo from "./Cargo";
 import TradeControls from './TradeControls';
+import TravelControls from './TravelControls';
 
 interface ShipProps {
     shipData: ShipData
@@ -18,8 +19,9 @@ function Ship({ shipData } : ShipProps) {
             {!isInTransit && <p>Currently at: {shipData.currentPlanet?.name}</p>}
             <p>Fuel: {shipData.fuel}</p>
             <p>Cargo 0/{shipData.cargoCapacity}</p>
-            {!isInTransit && <TradeControls currentPlanetId={shipData.currentPlanet?.id}/>}
-            {!isInTransit && <TravelControls shipId={shipData.id} currentPlanetId={shipData.currentPlanet?.id}/>}
+            <Cargo cargo={shipData.cargo}/>
+            {true && <TradeControls shipId={shipData.id} currentPlanetId={shipData.currentPlanet?.id}/>}
+            {true && <TravelControls shipId={shipData.id} currentPlanetId={shipData.currentPlanet?.id}/>}
         </div>
     );
 }
