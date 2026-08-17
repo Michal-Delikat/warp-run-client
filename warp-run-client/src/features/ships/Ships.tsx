@@ -26,7 +26,7 @@ function Ships() {
             <h2>Ships</h2>
             <ul>
                 {data.map((ship: ShipData) => {
-                    return <li key={ship.id}><Ship shipData={ship}></Ship></li>
+                    return <li key={ship.id}><Ship shipData={ship}/></li>
                 })}
             </ul>
         </>
