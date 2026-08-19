@@ -2,6 +2,7 @@ import { useAuth } from "./features/auth/AuthContext.tsx";
 import LoginForm from "./features/auth/LoginForm.tsx";
 import PlayerInfo from "./features/player/PlayerInfo.tsx";
 import Ships from "./features/ships/Ships.tsx";
+import Agents from "./features/agents/Agents.tsx";
 import "./App.css";
 
 function App() {
@@ -14,8 +15,9 @@ function App() {
   } else {
     return (
       <>
-        <PlayerInfo></PlayerInfo>
-        <Ships></Ships>
+        <PlayerInfo/>
+        <Ships/>
+        <Agents/>
       </>
     );
   }

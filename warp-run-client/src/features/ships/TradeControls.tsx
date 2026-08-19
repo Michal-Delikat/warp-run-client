@@ -1,7 +1,8 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useAuth } from "../auth/AuthContext";
-import type { TradeOptionData, CargoItem } from "./types";
+import type { TradeOptionData } from "../types";
+import type { CargoItem } from "./types";
 
 interface TradeControlProps {
     currentPlanetId: string | undefined;
